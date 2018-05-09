@@ -2,11 +2,15 @@
 #include<iostream>
 #include<vector>
 #include <string>
+#include<cstdlib>
+#include<ctime>
 
 using namespace std;
 
 int main()
 {
+    srand( (int) time(0) );
+
     string monster1, monster2, monster3;
    
     //create objects for each class
@@ -34,8 +38,8 @@ int main()
 
         if(input == "2")//forest
         {
-            monster1 = ;
-            monster2 = ;
+            monster1 = "Dragon";
+            monster2 = ";
             monster3 = ;
             cout<<"You have arrived at the Forest.\n";
             //randomly spawn a monster here

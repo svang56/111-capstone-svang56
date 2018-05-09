@@ -8,22 +8,35 @@ class Adventure
 
     private:
         double strength;
-        double will;
-        double intelligence;
-        double gold;
+        double wisdom;
+        double health;
+        double money;
     
     public:
        Adventure();
+       void
        void showIntroduction();
        void displayTutorial();
        void viewStats();
        void displayAreas();
        void goToLocation();
-       void fightDragon();
-       void fightBlackKnight();
-       void fightInCastle();
-       void fightInForest();
-       void fightInDungeon();
+       void encounterMonster(std::string);
+       bool fightOrRun(int);
+       void generateMonster(std::string, std::string, std::string);
+       void stayOrGo(int);
+
+       //forest
+       void eatMushroom();
+       void
+       //castle
+            //steal stuff in castle
+       //dungeon
+       //only fight in dungeon/ use vector to randomly generate monster
+
+       //town
+//buy stuff like potions 
+
+
 
 
 
