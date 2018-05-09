@@ -7,6 +7,8 @@ using namespace std;
 
 int main()
 {
+    string monster1, monster2, monster3;
+   
     //create objects for each class
     string input;
 
@@ -21,7 +23,7 @@ int main()
         cout<<"(1) Town (2) Forest (3) Dungeon (4) Castle(5) Save your game (6) Quit the game";
         cin>>input;
         
-        if(input == "1")
+        if(input == "1")//town
         {
             cout<<"You have reached town. What would you like to do?\n";
             cout<<"Type a number: (1) Go to the Shop (2) Sleep at the Inn"'
@@ -30,8 +32,11 @@ int main()
             
         }
 
-        if(input == "2")
+        if(input == "2")//forest
         {
+            monster1 = ;
+            monster2 = ;
+            monster3 = ;
             cout<<"You have arrived at the Forest.\n";
             //randomly spawn a monster here
             //then give option to fight or run
@@ -40,8 +45,11 @@ int main()
 
         }
 
-        if(input == "3")
+        if(input == "3")//dungeon
         {
+            monster1 = ;
+            monster2 = ;
+            monster3 = ;
             cout<<"You have arrived at the Dungeon.\n";
             //same as forest
             //but at dungeon, there is only one dragon and a lot of other monsters
@@ -50,15 +58,18 @@ int main()
             //stats dictate win rate for all fights
         }
 
-        if(input == "4")
+        if(input == "4")//castle
         {
+            monster1 = ;
+            monster2 = ;
+            monster3 = ;
             cout<<"You have arrived at the Castle\n";
             //same as forest
             //only one Black knight boss
 
         }
 
-        if(input == "5")
+        if(input == "5")//saving
         {
             //save stats, level, money, potions, bosses defeated
         }
