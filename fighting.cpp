@@ -62,7 +62,7 @@ void fighting::encounterMonster(std::string monsterName)
     result = fightOrRun(input);
     if( result == true)
     {
-        result = randomChance(monsterName);
+        result = battleChance(monsterName);
         
         if(result == true)
         {

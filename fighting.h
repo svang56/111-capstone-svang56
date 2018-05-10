@@ -13,8 +13,9 @@ class fighting
         std::string bossMonster;
         
     public:
-        void getMonsters(std::string, std::string, std::string)//this will get monster
+        void getMonsters(std::string, std::string, std::string);//this will get monster
         //for the area
+
 
         std::string randomMonster();
         
