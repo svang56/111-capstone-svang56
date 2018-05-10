@@ -1,4 +1,8 @@
 //Author: Sunny Vang
+#ifndef TEXTADVENTURE_H_
+#define TEXTADVENTURE_H_
+
+
 #include<iostream>
 #include<vector>
 
@@ -8,16 +12,27 @@ class Adventure
 
     protected:
         double strength;
-        double wisdom;
+        double will;
         double health;
         double money;
+        double potions;
+        double levels;
+        double experience;
     
     public:
-       Adventure();
-       void 
+       Adventure();//initialize stats then use load game to get stats
+       void loadGame(double, double, double, double,
+                     double, double, double);
+
+       void saveGame(double, double, double, double
+                     double, double, double);
+
+       void levelUp();//linear leveling up. everytime reach 100, have function to tell level up. Stats increase with levels -stats will increase by 1. --higher stats mean more chance to win
+       void monsterRewards();//gain exp and gold for regular monsters- bosses give more
+       void usePotion();
        void showIntroduction();
        void displayTutorial();
-       void viewStats();
+       void viewStats();//stats include st
        void displayAreas();
        void goToLocation();
 
@@ -32,10 +47,7 @@ class Adventure
 
 
 
+};
 
+#endif
 
-
-
-
-
-}
