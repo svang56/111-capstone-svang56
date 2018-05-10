@@ -2,19 +2,17 @@
 #include<iostream>
 #include<vector>
 #include <string>
-#include<cstdlib>
-#include<ctime>
+#include "fighting.h"
+#include "forest.h"
+#include "dungeon.h"
+#include "castle.h"
 
 using namespace std;
 
 int main()
 {
-    srand( (int) time(0) );
-
-    string monster1, monster2, monster3;
    
-    //create objects for each class
-    string input;
+    string input = " ";
 
     cout<<"Welcome to Adventure Quest! \n\nType a number:\n";
     cout<<"(1) Go through the tutorial (2) get straight into the game?";
@@ -23,9 +21,13 @@ int main()
 
     do
     {
-        cout<<"Where would you like to do?\n Type a number:";
-        cout<<"(1) Town (2) Forest (3) Dungeon (4) Castle(5) See more options\n";
-        cin>>input;
+        if(input == " ")
+        {
+            cout<<"Where would you like to go?\n Type a number:";
+            cout<<"(1) Town (2) Forest (3) Dungeon (4) Castle(5) See more options\n";
+            cin>>input;
+        }
+
         if(input == "5")
         {
             cout<<"(6) Save your game (7) Quit the game\n";
@@ -46,16 +48,23 @@ int main()
             }
             
         }
-        else if(input == "2")//forest
+        else if(input == "2")//-------------forest
         {   
-            //create object and initialize mosnter names
+            Forest forestArea;
+
+            forestArea.getMonsters("Goblin", "Wolf", "BlackBear");
+
             cout<<"You have arrived at the Forest.\n";
             do
-            {   //randomly choose a monster with rand function
-                //encounter monster function
-                //fight or run function
+            {
+                string enemy = " ";
+
+                enemy = forestArea.randomMonster();
+
+                forestArea.encounterMonster(enemy);
+                input = forestArea.stayOrGo();
+
                 //winorlose function  they will gain money, etx...
-                //after win or lose, stay here or go? return string 
             }while(input != "2");
 
             //if win then gain experience, and money----if lose then lose health
@@ -64,25 +73,35 @@ int main()
         }
         else if(input == "3")//dungeon
         {
-            monster1 = "Zombie";
-            monster2 = "Dragon";
-            monster3 = "Slime";
+            Dungeon dungeonArea;
+            dungeonArea.getMonsters("Zombie", "Slime", "Dragon");
+            
             cout<<"You have arrived at the Dungeon.\n";
-            //same as forest
-            //but at dungeon, there is only one dragon and a lot of other monsters
-            //unlimited other monsters but they are randomly generated
+            do
+            {
+                string enemy = " ";
+                enemy = dungeonArea.randomMonster();
+                dungeonArea.encounterMonster(enemy);
+                input = dungeonArea.stayOrGo();
+
+            }while(input != "2");
             //must be level 5 to fight dragon
             //stats dictate win rate for all fights
         }
         else if(input == "4")//castle
         {
-            monster1 = "BlackKnight";
-            monster2 = "Guard";
-            monster3 = "Magician";
+            Castle castleArea;
+            castleArea.getMonsters("Guard", "Magician", "BlackKnight");
             cout<<"You have arrived at the Castle\n";
-            //same as forest
-            //only one Black knight boss
+            do
+            {
+                string enemy = " ";
+                enemy = castleArea.randomMonster();
+                castleArea.encounterMonster(enemy);
+                input = castleArea.stayOrGo();
 
+            }while(input != "2");
+            
         }
         else if(input == "6")//saving
         {

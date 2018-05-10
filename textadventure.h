@@ -6,7 +6,7 @@
 class Adventure
 {
 
-    private:
+    protected:
         double strength;
         double wisdom;
         double health;
@@ -14,20 +14,14 @@ class Adventure
     
     public:
        Adventure();
-       void
+       void 
        void showIntroduction();
        void displayTutorial();
        void viewStats();
        void displayAreas();
        void goToLocation();
-       void encounterMonster(std::string);
-       bool fightOrRun(int);
-       void generateMonster(std::string, std::string, std::string);
-       void stayOrGo(int);
 
        //forest
-       void eatMushroom();
-       void
        //castle
             //steal stuff in castle
        //dungeon
