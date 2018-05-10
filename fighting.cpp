@@ -2,10 +2,17 @@
 #include<string>
 #include<iostream>
 #include"fighting.h"
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
 
-
-bool randomChance(std::string monsterName, int winPercentage)
+bool randomChance(std::string monsterName)
 {
+    srand (time(NULL));
+    
+    int winPercentage = 0;
+
+    winPercentage = rand()%100 + 1;
 
     if(monsterName == "Dragon" || monsterName == "BlackKnight")
     {
@@ -49,7 +56,6 @@ void encounterMonster(std::string monsterName)
     std::string input = " ";
 
     bool result = false;
-
     std::cout<<"You have encountered a "<<monsterName<<".\n";
     std::cout<<"Would you like to fight the "<<monsterName<<" or run?\n";
     std::cin>>input;//if 1 then fight , if 2 then run
@@ -74,6 +80,7 @@ void encounterMonster(std::string monsterName)
     }
 
 }
+
 
 std::string stayOrGo()
 {

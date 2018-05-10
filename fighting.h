@@ -11,7 +11,7 @@ class fighting
     public:
         
         void encounterMonster(std::string);//this will randomly spawn monster for player to fight
-        bool fightOrRun();//if 1 then fight, if 2 then run`
+        bool fightOrRun(std::string);//if 1 then fight, if 2 then run`
         void generateMonster(std::string, std::string, std::string);
         //this will generate monsters 
 
