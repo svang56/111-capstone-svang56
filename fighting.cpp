@@ -97,13 +97,29 @@ std::string fighting::randomMonster()
     srand (time(NULL));
     int randomNumber = 0;
     randomNumber = rand()%100 + 1;
-    std::string monsterName;
     
-    if(randomNumber >= 30)
+    if(randomNumber <= 30)
     {
-        monsterName = "
-        return
+       
+        return bossMonster;
+
     }
+    else if( randomNumber <= 60 && randomNumber > 30)
+    {
+        return regMonster1;
+    }
+    else if( randomNumber > 60 && randomNumber <= 100)
+    {
+        return regMonster2;
+    }
+}
+
+void fighting::getMonsters(std::string weakMonst1, std::string weakMonst2,
+                           std::string bossMonst)
+{
+    regMonster1 = weakMonst1;
+    regMonster2 = weakMonst2;
+    bossMonster = bossMonst;
 
 }
 
