@@ -6,7 +6,7 @@
 #include<stdlib.h>
 #include<time.h>
 
-bool fighting::randomChance(std::string monsterName)
+bool fighting::battleChance(std::string monsterName)
 {
     srand (time(NULL));
     
@@ -91,4 +91,20 @@ std::string fighting::stayOrGo()
     return input;
 
 }
+
+std::string fighting::randomMonster()
+{
+    srand (time(NULL));
+    int randomNumber = 0;
+    randomNumber = rand()%100 + 1;
+    std::string monsterName;
+    
+    if(randomNumber >= 30)
+    {
+        monsterName = "
+        return
+    }
+
+}
+
 
