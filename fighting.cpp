@@ -6,7 +6,7 @@
 #include<stdlib.h>
 #include<time.h>
 
-bool randomChance(std::string monsterName)
+bool fighting::randomChance(std::string monsterName)
 {
     srand (time(NULL));
     
@@ -39,7 +39,7 @@ bool randomChance(std::string monsterName)
 
 } 
 
-bool fightOrRun(std::string input)
+bool fighting::fightOrRun(std::string input)
 {
     if(input == "1")
     {
@@ -51,7 +51,7 @@ bool fightOrRun(std::string input)
     }
 }
 
-void encounterMonster(std::string monsterName)
+void fighting::encounterMonster(std::string monsterName)
 {   
     std::string input = " ";
 
@@ -82,7 +82,7 @@ void encounterMonster(std::string monsterName)
 }
 
 
-std::string stayOrGo()
+std::string fighting::stayOrGo()
 {
     std::string input = " ";
     std::cout<<"Please enter a number:\n";
