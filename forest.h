@@ -7,6 +7,7 @@ class Forest: public fighting
     public:
         Forest();
         void scavengeForest();
+        void eatMushroom();
 
 };
 
