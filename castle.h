@@ -8,6 +8,7 @@ class Castle: public fighting
 {
     public:
         Castle();
+        void searchforTreasure();
 };
 
 #endif

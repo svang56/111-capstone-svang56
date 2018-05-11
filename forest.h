@@ -6,6 +6,8 @@ class Forest: public fighting
 {
     public:
         Forest();
+        void scavengeForest();
+
 };
 
 #endif //FOREST_H_
