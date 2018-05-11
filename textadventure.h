@@ -2,7 +2,6 @@
 #ifndef TEXTADVENTURE_H_
 #define TEXTADVENTURE_H_
 
-
 #include<iostream>
 #include<vector>
 
@@ -13,7 +12,8 @@ class Adventure
     protected:
         double strength;
         double will;
-        double health;
+        double wisdom;
+        vector<std::string> health;
         double money;
         double potions;
         double levels;
@@ -26,6 +26,7 @@ class Adventure
 
        void saveGame(double, double, double, double
                      double, double, double);
+       void restoreHealth(vector<std::string> );
 
        void levelUp();//linear leveling up. everytime reach 100, have function to tell level up. Stats increase with levels -stats will increase by 1. --higher stats mean more chance to win
        void monsterRewards();//gain exp and gold for regular monsters- bosses give more
@@ -33,8 +34,6 @@ class Adventure
        void showIntroduction();
        void displayTutorial();
        void viewStats();//stats include st
-       void displayAreas();
-       void goToLocation();
 
        //forest
        //castle
