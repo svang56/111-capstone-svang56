@@ -7,12 +7,12 @@
 #include<stdlib.h>
 #include<time.h>
 
-const double bossMoney = 50;
-const double bossExp = 20;
-const double regMoney = 10;
-const double regExp = 10;
-const double bossWinPercent = 30;
-const double regMonstPercent = 50;
+const int bossMoney = 50;
+const int bossExp = 20;
+const int regMoney = 10;
+const int regExp = 10;
+const int bossWinPercent = 30;
+const int regMonstPercent = 50;
 
 bool fighting::battleChance(std::string monsterName)
 {
@@ -26,8 +26,8 @@ bool fighting::battleChance(std::string monsterName)
     {
         if( winPercentage <= bossWinPercent)
         {
-            money = money + (rand()%bossMoney + 20);
-            experience = experience + (rand()%bossExp + 50);
+            money =+ (rand()%bossMoney + 20);
+            experience += (rand()%bossExp + 50);
             return true;
         }
         else if( winPercentage > 30 && winPercentage != 77)
@@ -39,8 +39,8 @@ bool fighting::battleChance(std::string monsterName)
     {
         if( winPercentage >= regMonstPercent)
         {   
-            money = money + (rand()%regMoney + 10);
-            experience = experience + (rand()%regExp+15);
+            money += (rand()%regMoney + 10);
+            experience += (rand()%regExp+15);
             return true;
         }
         else
@@ -70,6 +70,7 @@ void fighting::encounterMonster(std::string monsterName)
     bool result = false;
     std::cout<<"You have encountered a "<<monsterName<<".\n";
     std::cout<<"Would you like to fight the "<<monsterName<<" or run?\n";
+    std::cout<<"Type (1) to Fight or (2) to run away. \n";
     std::cin>>input;//if 1 then fight , if 2 then run
     result = fightOrRun(input);
     if( result == true)

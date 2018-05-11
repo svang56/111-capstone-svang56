@@ -2,6 +2,7 @@
 #ifndef FIGHTING_H_
 #define FIGHTING_H_
 #include<string>
+#include "textadventure.h"
 //this will be the base class for the 3 fighting areas / will make own 
 //class for the town itself
 

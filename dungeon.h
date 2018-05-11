@@ -8,4 +8,5 @@ class Dungeon: public fighting
     public:
         Dungeon();
 };
+
 #endif

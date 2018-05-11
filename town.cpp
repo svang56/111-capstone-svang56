@@ -3,6 +3,7 @@
 #include<string>
 #include "textadventure.h"
 
+
 void Town::shopping()
 {
     std::string input = " ";
@@ -12,12 +13,14 @@ void Town::shopping()
         std::cout<<"Would you like to buy a potion? It will cost you 25 gold.\n";
         std::cout<<"Enter a number: (1) Yes (2) No\n";
         std::cin>>input;
+
         if(input == "1")
         {
             if(money >= 25)
             {
-                money == money - 25;
+                money -= 25;
                 potions++;
+                std::cout<<"This is the money amount: "<<money<<std::endl;
             }
             else
             {
@@ -50,7 +53,7 @@ void Town::goToInn()
         {
             if(money >= 25)
             {
-                money == money - 25;
+                money -= 25;
                 restoreHealth(health);
             }
             else
@@ -68,5 +71,5 @@ void Town::goToInn()
             std::cout<<"Please enter valid input.\n";
         }
 
-    }while(input == "2");
+    }while(input != "2");
 }

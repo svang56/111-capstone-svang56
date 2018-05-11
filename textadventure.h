@@ -4,7 +4,7 @@
 
 #include<iostream>
 #include<vector>
-
+#include<string>
 
 class Adventure
 {
@@ -13,17 +13,18 @@ class Adventure
         double strength;
         double will;
         double wisdom;
-        vector<std::string> health;
+        std::vector<std::string> health;
         double money;
         double potions;
         double levels;
         double experience;
+        double playerHealth;
     
     public:
        Adventure();//initialize stats then use load game to get stats
        void loadGame();
        void saveGame();
-       void restoreHealth();
+       void restoreHealth(std::vector<std::string>);
        void loseHealth();
        void checkHealth();
        void levelUp();

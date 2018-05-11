@@ -7,6 +7,8 @@ const double boostStr = 2;
 
 Adventure::Adventure()
 {
+    health.resize(5);
+    restoreHealth(health);
     strength = 0;
     will = 0;
     wisdom = 0;
@@ -15,7 +17,7 @@ Adventure::Adventure()
     experience = 0;
 }
 
-void Adveture::loadGame()
+void Adventure::loadGame()
 {
 //pull shit from file
 }
@@ -25,11 +27,11 @@ void Adventure::saveGame()
 //delete stuff in file and then put numbers in
 }
 
-void Adventure::restoreHealth()
+void Adventure::restoreHealth(std::vector<std::string> vector)
 {
-    for(int i = 0; i < health.size(); i++)
+    for(int i = 0; i < vector.size(); i++)
     {
-        health[i] = "FILLED";
+        vector[i] = "FILLED";
     }
 
 }
@@ -37,15 +39,23 @@ void Adventure::restoreHealth()
 void Adventure::loseHealth()
 {
     int i = 0;
-    while(health[i] == "EMPTY")
+
+    while(health[i] == "EMPTY" && i < health.size())
     {
-        i++:
+        i++;
     }
-    health[i] == "EMPTY";
-            
+    if(i < health.size())
+    {
+        health[i] = "EMPTY";
+        playerHealth--;
+    }
+    else
+    {
+        std::cout<<"You have no more health and can no longer fight\n";
+    }
 }
 
-void Adventure::levelUp();
+void Adventure::levelUp()
 {
 //after everybattle, include this. 
     if(experience >= 100)
@@ -59,47 +69,40 @@ void Adventure::levelUp();
         strength = strength + 2;
         will = will + 1;
         wisdom = wisdom + 1;
-        health.push_back();
+        health.push_back("EMPTY");
 
         std::cout<<"Congradulations! You have leveled up!\n";
         std::cout<<"Your stats have increased.\n";
-        std::cout<<"You are level: "<<levels<<std::endl;
-        checkHealth();
-        std::cout<<"Your strength level is: "<<strengh<<std::endl;
-        std::cout<<"Your willpower level is: "<<will<<std::endl;
-        std::cout<<"Your wisdom level is: "<<wisdom<<std::endl;
-        std::cout<<"Your experience amount is: "<<experience<<"/100\n";
-
-        //finsih this shit
+        viewStats();
     }
 
 }
  
-void Adventure::usePotion();
+void Adventure::usePotion()
 {
-    restoreHealth();
-    potion--;
+    restoreHealth(health);
+    potions--;
 }
 
-void Adventure::showIntroduction();
-{
-}
-
-void Adventure::displayTutorial();
+void Adventure::showIntroduction()
 {
 }
 
-void Adventure::viewStats();
+void Adventure::displayTutorial()
+{
+}
+
+void Adventure::viewStats()
 {
     std::cout<<"You are level: "<<levels<<std::endl;
     checkHealth();
-    std::cout<<"Your strength level is: "<<strengh<<std::endl;
+    std::cout<<"Your strength level is: "<<strength<<std::endl;
     std::cout<<"Your willpower level is: "<<will<<std::endl;
     std::cout<<"Your wisdom level is: "<<wisdom<<std::endl;
-    std::cout<<"Your experience amount is: "<<experience<<"/100\n";
+    std::cout<<"Your experience amount is: ("<<experience<<"/100)\n";
 }
 
-void Adventure::checkHealth();
+void Adventure::checkHealth()
 {
     std::string healthCheck = " ";
 
@@ -114,8 +117,10 @@ void Adventure::checkHealth();
             healthCount++;
         }
     }
+    
+    playerHealth = healthCount;
 
-    std::cout<<"Your health is "<<healthCount<<"/"<<health.size()<<".\n";
+   // std::cout<<"Your health is ("<<healthCount<<"/"<<health.size()<<").\n";
     
 }
 

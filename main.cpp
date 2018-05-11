@@ -4,6 +4,7 @@
 #include <string>
 #include "fighting.h"
 #include "forest.h"
+#include "town.h"
 #include "dungeon.h"
 #include "castle.h"
 
@@ -11,42 +12,60 @@ using namespace std;
 
 int main()
 {
-   
     string input = " ";
-
-    cout<<"Welcome to Adventure Quest! \n\nType a number:\n";
-    cout<<"(1) Go through the tutorial (2) get straight into the game?";
-    cin>>input;
-
+    Adventure initialize;
 
     do
     {
-        if(input == " ")
-        {
-            cout<<"Where would you like to go?\n Type a number:";
-            cout<<"(1) Town (2) Forest (3) Dungeon (4) Castle(5) See more options\n";
-            cin>>input;
-        }
+    cout<<"Welcome to Adventure Quest! \n\nType a number:\n";
+    cout<<"(1) Go through the tutorial (2) get straight into the game?";
+    cin>>input;
+    if(input == "1")
+    {
+        //tutorial
+    }
+    
+    }while(input != "2");
+    
 
-        if(input == "5")
-        {
-            cout<<"(6) Save your game (7) Quit the game\n";
-        }
+    do
+    {
+        cout<<"Where would you like to go?\n Type a number:";
+        cout<<"(1) Town (2) Forest (3) Dungeon (4) Castle(5) See more options\n";
+        cout<<"(6) Save your game (7) Quit the game\n";
+        cin>>input;
 
         if(input == "1")//town
         {
-            cout<<"You have reached town. What would you like to do?\n";
-            cout<<"Type a number: (1) Go to the Shop (2) Sleep at the Inn\n";
-            cin>>input;//if 1, go to shop, if 2, go to inn
-            if(input == "1")
+            Town townArea;
+
+            do
             {
-                //shop function
-            }
-            else
-            {
-                //sleep at inn function
-            }
             
+                cout<<"You are in town. What would you like to do?\n";
+                cout<<"Type a number: (1) Go to the Shop (2) Sleep at the Inn\n";
+                cout<<"or (3) to leave Town.\n";
+                cin>>input;
+
+                if(input == "1")
+                {
+                    townArea.shopping();
+                }
+                else if(input == "2")
+                {
+                    townArea.goToInn();
+                }
+                else if (input == "3")
+                {
+                    cout<<"You have left Town.\n";
+                }
+                else
+                {
+                    cout<<"Please enter valid input\n";
+                }
+
+            }while(input != "3");
+
         }
         else if(input == "2")//-------------forest
         {   

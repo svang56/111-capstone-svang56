@@ -2,6 +2,7 @@
 #ifndef TOWN_H_
 #define TOWN_H_
 
+#include "textadventure.h"
 #include<iostream>
 #include<string>
 
