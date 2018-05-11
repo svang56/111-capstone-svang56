@@ -8,6 +8,8 @@
 #include "dungeon.h"
 #include "castle.h"
 
+const int reset = 0;
+
 using namespace std;
 
 int main()
@@ -17,13 +19,13 @@ int main()
 
     do
     {
-    cout<<"Welcome to Adventure Quest! \n\nType a number:\n";
-    cout<<"(1) Go through the tutorial (2) get straight into the game?";
-    cin>>input;
-    if(input == "1")
-    {
-        //tutorial
-    }
+        cout<<"Welcome to Adventure Quest! \n\nType a number:\n";
+        cout<<"(1) Go through the tutorial (2) get straight into the game?";
+        cin>>input;
+        if(input == "1")
+        {
+            //tutorial
+        }
     
     }while(input != "2");
     
@@ -72,19 +74,35 @@ int main()
         {   
             Forest forestArea;
 
-            forestArea.getMonsters("Goblin", "Wolf", "BlackBear");
+            forestArea.getMonsters("Goblin", "Wolf", "Black Bear");
 
             cout<<"You have arrived at the Forest.\n";
 
             do
             {
-                string enemy = " ";
+                cout<<"Would you like to search the forest for items or fight ";
+                cout<<"monsters?\n";
+                cin>>input;
+            
+                if(input == "1")
+                {
+                    forestArea.searchForest();
+                }
+                else if(input == "2")
+                {
+                    string enemy = " ";
 
-                enemy = forestArea.randomMonster();
+                    enemy = forestArea.randomMonster();
 
-                forestArea.encounterMonster(enemy);
+                    forestArea.encounterMonster(enemy);
+              
+                    input = forestArea.stayOrGo();
 
-                input = forestArea.stayOrGo();
+                }
+                else
+                {
+                    cout<<"Please enter valid input.\n";
+                }
 
             }while(input != "2");
 
@@ -116,22 +134,47 @@ int main()
         {
             Castle castleArea;
 
-            castleArea.getMonsters("Guard", "Magician", "BlackKnight");
+            castleArea.getMonsters("Guard", "Magician", "Black Knight");
+
+            int searchCount = 0;
+
 
             cout<<"You have arrived at the Castle\n";
-
             do
             {
-                string enemy = " ";
+                cout<<"Would you like to: (1) Search the castle for treasure";
+                cout<<" (2) Battle the inhabitants of the castle? \n";
+                cin>>input;
 
-                enemy = castleArea.randomMonster();
+                if(input == "1" && searchCount < 2)
+                {
+                    searchForTreasure();
+                    searchCount++;
+                }
+                else if(input == "2" || searchCount >= 2)
+                {
 
-                castleArea.encounterMonster(enemy);
+                    string enemy = " ";
 
-                input = castleArea.stayOrGo();
+                    enemy = castleArea.randomMonster();
 
-            }while(input != "2");
+                    castleArea.encounterMonster(enemy);
+
+                    input = castleArea.stayOrGo();
+
+                    if(searchCount >= 2)
+                    {
+                        searchCount = reset;
+                    }
+
+                }
+                else
+                {
+                    cout<<"Please enter valid input.";
+                }
             
+            }while(input != "2");
+
         }
         else if(input == "5")
         {
@@ -141,10 +184,12 @@ int main()
         {
             //save stats, level, money, potions, bosses defeated
         }
+
         
 
     }while(input != "7");
 
     return 0;
 }
+
 
