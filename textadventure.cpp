@@ -7,6 +7,12 @@ const double boostStr = 2;
 
 Adventure::Adventure()
 {
+    strength = 0;
+    will = 0;
+    wisdom = 0;
+    money = 25;
+    levels = 0;
+    experience = 0;
 }
 
 void Adveture::loadGame()
@@ -14,7 +20,7 @@ void Adveture::loadGame()
 //pull shit from file
 }
 
-void Adventure::saveGame(         )
+void Adventure::saveGame()
 {
 //delete stuff in file and then put numbers in
 }
