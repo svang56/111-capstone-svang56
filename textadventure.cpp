@@ -63,14 +63,14 @@ void Adventure::levelUp()
     if(experience >= 100)
     {//this resets counter to 0. Adds extra experience to next level
         double temp = 0;
-        experience = experience - 100;
-        experience = temp;
+        experience -= 100;
+        temp = experience;
         experience = reset;
-        experience = experience + temp;
+        experience += temp;
         levels++;
-        strength = strength + 2;
-        will = will + 1;
-        wisdom = wisdom + 1;
+        strength += 2;
+        will += 2;
+        wisdom += 1;
         health.push_back("EMPTY");
 
         std::cout<<"Congradulations! You have leveled up!\n";

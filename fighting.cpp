@@ -11,18 +11,25 @@ const int bossMoney = 50;
 const int bossExp = 20;
 const int regMoney = 10;
 const int regExp = 10;
-const int bossWinPercent = 30;
-const int regMonstPercent = 50;
+const int baseBossPercent = 5;
+const int baseRegPercent = 45;
 
 bool fighting::battleChance(std::string monsterName)
 {
+    double bossWinPercent = baseBossPercent;
+    double monstWinPercent = baseRegPercent;
+    //next two lines increase win percent when battleing
+
+    bossWinPercent += ((strength + wisdom + will) * .5);
+    monstWinPercemt += ((strength + wisdom + wiill) * .5);
+
     srand (time(NULL));
     
     int winPercentage = 0;
 
     winPercentage = rand()%100 + 1;
 
-    if(monsterName == "Dragon" || monsterName == "BlackKnight")
+    if(monsterName == "Dragon" || monsterName == "Black Knight")
     {
         if( winPercentage <= bossWinPercent)
         {
@@ -30,7 +37,7 @@ bool fighting::battleChance(std::string monsterName)
             experience += (rand()%bossExp + 50);
             return true;
         }
-        else if( winPercentage > 30 && winPercentage != 77)
+        else if( winPercentage > bossWinPercent && winPercentage != 77)
         {
             return false;
         }
@@ -101,6 +108,7 @@ void fighting::encounterMonster(std::string monsterName)
         std::cout<<"You do not have enough health to fight and run away.\n";
     }
 
+    levelUp();
 }
 
 
@@ -143,6 +151,11 @@ void fighting::getMonsters(std::string weakMonst1, std::string weakMonst2,
     regMonster2 = weakMonst2;
     bossMonster = bossMonst;
 
+}
+
+double fighting::statBoost()
+{
+    double 
 }
 
 
