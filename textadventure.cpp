@@ -7,7 +7,9 @@ const double boostStr = 2;
 
 Adventure::Adventure()
 {
+    
     health.resize(5);
+    playerHealth = health.size();
     restoreHealth(health);
     strength = 0;
     will = 0;
@@ -95,7 +97,7 @@ void Adventure::displayTutorial()
 void Adventure::viewStats()
 {
     std::cout<<"You are level: "<<levels<<std::endl;
-    checkHealth();
+    std::cout<<"Your health is: ("<<playerHealth<<"/"<<health.size()<<").\n";
     std::cout<<"Your strength level is: "<<strength<<std::endl;
     std::cout<<"Your willpower level is: "<<will<<std::endl;
     std::cout<<"Your wisdom level is: "<<wisdom<<std::endl;
@@ -120,7 +122,6 @@ void Adventure::checkHealth()
     
     playerHealth = healthCount;
 
-   // std::cout<<"Your health is ("<<healthCount<<"/"<<health.size()<<").\n";
     
 }
 

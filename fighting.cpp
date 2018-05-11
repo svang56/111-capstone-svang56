@@ -73,25 +73,32 @@ void fighting::encounterMonster(std::string monsterName)
     std::cout<<"Type (1) to Fight or (2) to run away. \n";
     std::cin>>input;//if 1 then fight , if 2 then run
     result = fightOrRun(input);
-    if( result == true)
+    if(playerHealth > 0)
     {
-        result = battleChance(monsterName);
+        if( result == true)
+        {
+            result = battleChance(monsterName);
         
-        if(result == true)
-        {
-            std::cout<<"You have defeated the "<<monsterName<<std::endl;
-        }
-        else 
-        {
-            loseHealth();
-            std::cout<<"You lost the battle and lose 1 health\n";
+            if(result == true)
+            {
+                std::cout<<"You have defeated the "<<monsterName<<std::endl;
+            }
+            else 
+            {
+                loseHealth();
+                std::cout<<"You lost the battle and lose 1 health\n";
 
-        }
+            }
         
+        }
+        else
+        {
+            std::cout<<"You ran away from the "<<monsterName<<" and escaped.\n";
+        }
     }
     else
     {
-        std::cout<<"You ran away from the "<<monsterName<<" and escaped.\n";
+        std::cout<<"You do not have enough health to fight and run away.\n";
     }
 
 }

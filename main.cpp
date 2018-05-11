@@ -13,7 +13,7 @@ using namespace std;
 int main()
 {
     string input = " ";
-    Adventure initialize;
+    Adventure game;
 
     do
     {
@@ -31,8 +31,9 @@ int main()
     do
     {
         cout<<"Where would you like to go?\n Type a number:";
-        cout<<"(1) Town (2) Forest (3) Dungeon (4) Castle(5) See more options\n";
-        cout<<"(6) Save your game (7) Quit the game\n";
+        cout<<"(1) Go to Town (2) Go to the Forest (3) Go into the Dungeon\n";
+        cout<<"(4) Go into the Castle (5) View your Stats (6) Save your game\n";
+        cout<<"(7) Quit the game\n";
         cin>>input;
 
         if(input == "1")//town
@@ -44,7 +45,7 @@ int main()
             
                 cout<<"You are in town. What would you like to do?\n";
                 cout<<"Type a number: (1) Go to the Shop (2) Sleep at the Inn\n";
-                cout<<"or (3) to leave Town.\n";
+                cout<<"(3) View Stats (4) Leave Town .\n";
                 cin>>input;
 
                 if(input == "1")
@@ -57,14 +58,14 @@ int main()
                 }
                 else if (input == "3")
                 {
-                    cout<<"You have left Town.\n";
+                    townArea.viewStats();
                 }
                 else
                 {
                     cout<<"Please enter valid input\n";
                 }
 
-            }while(input != "3");
+            }while(input != "4");
 
         }
         else if(input == "2")//-------------forest
@@ -74,6 +75,7 @@ int main()
             forestArea.getMonsters("Goblin", "Wolf", "BlackBear");
 
             cout<<"You have arrived at the Forest.\n";
+
             do
             {
                 string enemy = " ";
@@ -81,26 +83,29 @@ int main()
                 enemy = forestArea.randomMonster();
 
                 forestArea.encounterMonster(enemy);
+
                 input = forestArea.stayOrGo();
 
-                //winorlose function  they will gain money, etx...
             }while(input != "2");
 
-            //if win then gain experience, and money----if lose then lose health
-            //then after fight, ask if they would like to stay or leave
 
         }
         else if(input == "3")//dungeon
         {
             Dungeon dungeonArea;
+
             dungeonArea.getMonsters("Zombie", "Slime", "Dragon");
             
             cout<<"You have arrived at the Dungeon.\n";
+
             do
             {
                 string enemy = " ";
+
                 enemy = dungeonArea.randomMonster();
+
                 dungeonArea.encounterMonster(enemy);
+
                 input = dungeonArea.stayOrGo();
 
             }while(input != "2");
@@ -110,17 +115,27 @@ int main()
         else if(input == "4")//castle
         {
             Castle castleArea;
+
             castleArea.getMonsters("Guard", "Magician", "BlackKnight");
+
             cout<<"You have arrived at the Castle\n";
+
             do
             {
                 string enemy = " ";
+
                 enemy = castleArea.randomMonster();
+
                 castleArea.encounterMonster(enemy);
+
                 input = castleArea.stayOrGo();
 
             }while(input != "2");
             
+        }
+        else if(input == "5")
+        {
+           game.viewStats();
         }
         else if(input == "6")//saving
         {
@@ -128,9 +143,6 @@ int main()
         }
         
 
-        
-
-//this do while loop will be used to go to places
     }while(input != "7");
 
     return 0;
