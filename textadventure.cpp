@@ -21,7 +21,22 @@ void Adventure::saveGame(         )
 
 void Adventure::restoreHealth()
 {
+    for(int i = 0; i < health.size(); i++)
+    {
+        health[i] = "FILLED";
+    }
 
+}
+
+void Adventure::loseHealth()
+{
+    int i = 0;
+    while(health[i] == "EMPTY")
+    {
+        i++:
+    }
+    health[i] == "EMPTY";
+            
 }
 
 void Adventure::levelUp();
