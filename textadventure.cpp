@@ -38,6 +38,26 @@ void Adventure::restoreHealth(std::vector<std::string> vector)
 
 }
 
+void Adventure::restoreOneHealth()
+{
+    int i = 0;
+    while(health[i] == "FILLED" && i< health.size())
+    {
+        i++;
+    }
+    
+    if( i < health.size())
+    {
+        health[i] = "FILLED";
+        playerHealth++;
+    }
+    else
+    {
+        std::cout<<"You have full health and con no longer gain health\n";
+    }
+
+}
+
 void Adventure::loseHealth()
 {
     int i = 0;

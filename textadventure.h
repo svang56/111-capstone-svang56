@@ -25,6 +25,7 @@ class Adventure
        void loadGame();
        void saveGame();
        void restoreHealth(std::vector<std::string>);
+       void restoreOneHealth();
        void loseHealth();
        void checkHealth();
        void levelUp();

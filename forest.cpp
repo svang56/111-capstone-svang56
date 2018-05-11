@@ -5,7 +5,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
-
+#include <iostream>
+#include <string>
 Forest::Forest()
 {
 
@@ -14,6 +15,7 @@ Forest::Forest()
 void Forest::searchForest()
 {
     int randomChance = 0;
+
 
     srand( time(NULL));
 

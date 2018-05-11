@@ -11,7 +11,7 @@ const int bossMoney = 50;
 const int bossExp = 20;
 const int regMoney = 10;
 const int regExp = 10;
-const int baseBossPercent = 5;
+const int baseBossPercent = 15;
 const int baseRegPercent = 45;
 
 bool fighting::battleChance(std::string monsterName)
@@ -21,7 +21,7 @@ bool fighting::battleChance(std::string monsterName)
     //next two lines increase win percent when battleing
 
     bossWinPercent += ((strength + wisdom + will) * .5);
-    monstWinPercemt += ((strength + wisdom + wiill) * .5);
+    monstWinPercent += ((strength + wisdom + will) * .5);
 
     srand (time(NULL));
     
@@ -29,7 +29,7 @@ bool fighting::battleChance(std::string monsterName)
 
     winPercentage = rand()%100 + 1;
 
-    if(monsterName == "Dragon" || monsterName == "Black Knight")
+    if(monsterName == "Dragon" || monsterName == "Black Knight" || monsterName == "Black Bear")
     {
         if( winPercentage <= bossWinPercent)
         {
@@ -37,14 +37,14 @@ bool fighting::battleChance(std::string monsterName)
             experience += (rand()%bossExp + 50);
             return true;
         }
-        else if( winPercentage > bossWinPercent && winPercentage != 77)
+        else
         {
             return false;
         }
     }
     else
     {
-        if( winPercentage >= regMonstPercent)
+        if( winPercentage <= monstWinPercent)
         {   
             money += (rand()%regMoney + 10);
             experience += (rand()%regExp+15);

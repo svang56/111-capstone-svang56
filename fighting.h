@@ -19,6 +19,8 @@ class fighting: public Adventure
 
         void monsterRewards();//gain exp and gold for reg monst,  - boss give more
         std::string randomMonster();
+
+        double statBoost();
         
         void encounterMonster(std::string);//this will randomly spawn monster for player to fight
         bool fightOrRun(std::string);//if 1 then fight, if 2 then run`
