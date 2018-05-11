@@ -2,9 +2,17 @@
 #include<string>
 #include<iostream>
 #include"fighting.h"
+#include"textadventure.h"
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
+
+const double bossMoney = 50;
+const double bossExp = 20;
+const double regMoney = 10;
+const double regExp = 10;
+const double bossWinPercent = 30;
+const double regMonstPercent = 50;
 
 bool fighting::battleChance(std::string monsterName)
 {
@@ -16,8 +24,10 @@ bool fighting::battleChance(std::string monsterName)
 
     if(monsterName == "Dragon" || monsterName == "BlackKnight")
     {
-        if( winPercentage <= 30)
+        if( winPercentage <= bossWinPercent)
         {
+            money = money + (rand()%bossMoney + 20);
+            experience = experience + (rand()%bossExp + 50);
             return true;
         }
         else if( winPercentage > 30 && winPercentage != 77)
@@ -27,8 +37,10 @@ bool fighting::battleChance(std::string monsterName)
     }
     else
     {
-        if( winPercentage >= 50)
+        if( winPercentage >= regMonstPercent)
         {   
+            money = money + (rand()%regMoney + 10);
+            experience = experience + (rand()%regExp+15);
             return true;
         }
         else
@@ -68,9 +80,11 @@ void fighting::encounterMonster(std::string monsterName)
         {
             std::cout<<"You have defeated the "<<monsterName<<std::endl;
         }
-        else
+        else 
         {
+            loseHealth();
             std::cout<<"You lost the battle and lose 1 health\n";
+
         }
         
     }
@@ -122,5 +136,6 @@ void fighting::getMonsters(std::string weakMonst1, std::string weakMonst2,
     bossMonster = bossMonst;
 
 }
+
 
 

@@ -58,10 +58,9 @@ void Town::goToInn()
                 std::cout<<"You do not have enough money.\n";
             }
         }
-
         else if (input == "2" )
         {
-            std::cout<<"You decide to not buy a potion and leave the shop\n";
+            std::cout<<"You decide to not to rest at the Inn and leave\n";
 
         }
         else

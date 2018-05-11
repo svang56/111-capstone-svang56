@@ -63,6 +63,8 @@ void Adventure::levelUp();
         std::cout<<"Will: "<<will<<std::endl;
         std::cout<<"Wisdom: "<<wisdom<<std::endl;
         std::cout<<"Experience: "<<experience<<"/100\n";
+
+        //finsih this shit
     }
 
 }
