@@ -57,12 +57,12 @@ void Adventure::levelUp();
 
         std::cout<<"Congradulations! You have leveled up!\n";
         std::cout<<"Your stats have increased.\n";
-        std::cout<<"Level: "<<levels<<std::endl;
-        std::cout<<"Health: "<<health.size()<<std::endl;
-        std::cout<<"Strength: "<<strengh<<std::endl;
-        std::cout<<"Will: "<<will<<std::endl;
-        std::cout<<"Wisdom: "<<wisdom<<std::endl;
-        std::cout<<"Experience: "<<experience<<"/100\n";
+        std::cout<<"You are level: "<<levels<<std::endl;
+        checkHealth();
+        std::cout<<"Your strength level is: "<<strengh<<std::endl;
+        std::cout<<"Your willpower level is: "<<will<<std::endl;
+        std::cout<<"Your wisdom level is: "<<wisdom<<std::endl;
+        std::cout<<"Your experience amount is: "<<experience<<"/100\n";
 
         //finsih this shit
     }
@@ -71,6 +71,8 @@ void Adventure::levelUp();
  
 void Adventure::usePotion();
 {
+    restoreHealth();
+    potion--;
 }
 
 void Adventure::showIntroduction();
@@ -83,6 +85,31 @@ void Adventure::displayTutorial();
 
 void Adventure::viewStats();
 {
+    std::cout<<"You are level: "<<levels<<std::endl;
+    checkHealth();
+    std::cout<<"Your strength level is: "<<strengh<<std::endl;
+    std::cout<<"Your willpower level is: "<<will<<std::endl;
+    std::cout<<"Your wisdom level is: "<<wisdom<<std::endl;
+    std::cout<<"Your experience amount is: "<<experience<<"/100\n";
+}
+
+void Adventure::checkHealth();
+{
+    std::string healthCheck = " ";
+
+    double healthCount = 0;
+
+    for(int i = 0; i < health.size(); i++)
+    {
+        healthCheck = health[i];
+        
+        if(healthCheck == "FILLED")
+        {
+            healthCount++;
+        }
+    }
+
+    std::cout<<"Your health is "<<healthCount<<"/"<<health.size()<<".\n";
     
 }
 
