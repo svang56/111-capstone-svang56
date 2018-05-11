@@ -5,7 +5,7 @@
 //this will be the base class for the 3 fighting areas / will make own 
 //class for the town itself
 
-class fighting
+class fighting: public Adventure
 {
     protected:
         std::string regMonster1;
@@ -16,7 +16,7 @@ class fighting
         void getMonsters(std::string, std::string, std::string);//this will get monster
         //for the area
 
-
+        void monsterRewards();//gain exp and gold for reg monst,  - boss give more
         std::string randomMonster();
         
         void encounterMonster(std::string);//this will randomly spawn monster for player to fight
@@ -29,12 +29,6 @@ class fighting
 
         std::string stayOrGo();//asks if want to fight again or leave or use potion
         
-        //to get monster names, initialize within the do-while loop 
-        //in the int main() into the constructor 
-
-        //Each class inheriting will have their own constructor
-        //and will have private variables of each monster
-
         /* when not high enough level, you walk towards the dragon/knight/hugeblackbea but realize 
         you aren't strong enough to fight run away*/
 
