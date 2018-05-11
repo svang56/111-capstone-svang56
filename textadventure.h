@@ -26,7 +26,7 @@ class Adventure
 
        void saveGame(double, double, double, double
                      double, double, double);
-       void restoreHealth(vector<std::string> );
+       void restoreHealth();
 
        void levelUp();//linear leveling up. everytime reach 100, have function to tell level up. Stats increase with levels -stats will increase by 1. --higher stats mean more chance to win
        void monsterRewards();//gain exp and gold for regular monsters- bosses give more

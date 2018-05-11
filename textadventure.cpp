@@ -19,6 +19,11 @@ void Adventure::saveGame(         )
 //delete stuff in file and then put numbers in
 }
 
+void Adventure::restoreHealth()
+{
+
+}
+
 void Adventure::levelUp();
 {
 //after everybattle, include this. 
@@ -33,8 +38,16 @@ void Adventure::levelUp();
         strength = strength + 2;
         will = will + 1;
         wisdom = wisdom + 1;
+        health.push_back();
+
         std::cout<<"Congradulations! You have leveled up!\n";
-        std::cout<<"
+        std::cout<<"Your stats have increased.\n";
+        std::cout<<"Level: "<<levels<<std::endl;
+        std::cout<<"Health: "<<health.size()<<std::endl;
+        std::cout<<"Strength: "<<strengh<<std::endl;
+        std::cout<<"Will: "<<will<<std::endl;
+        std::cout<<"Wisdom: "<<wisdom<<std::endl;
+        std::cout<<"Experience: "<<experience<<"/100\n";
     }
 
 }
