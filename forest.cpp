@@ -19,23 +19,28 @@ void Forest::searchForest()
 
     srand( time(NULL));
 
-    randomChance = rand()%10 + 1;
+    randomChance = rand()%5 + 1;
 
     switch(randomChance)
     {
         case 1: 
+        {
             potions++;
             std::cout<<"You found a potion as you were roaming the forest.\n";
             break;
+        }
 
         case 2:
+        {
             int moneyFound = 0;
             moneyFound = rand()%2 + 1;
             money += moneyFound;
-            cout<<"You find "<<moneyFound<<" gold on the ground.\n";
+            std::cout<<"You find "<<moneyFound<<" gold on the ground.\n";
             break;
+        }
 
         case 3:
+        { 
             std::string input = " ";
 
             std::cout<<"You found a strange mushroom.\n";
@@ -53,20 +58,30 @@ void Forest::searchForest()
 
                 break;
             }
+        }
 
         case 4:
+        {
             std::cout<<"You find some worthless junk and throw ";
-            std::cout<<" it back where you found it.\n"
+            std::cout<<" it back where you found it.\n";
 
             break;
+        }    
                 
         case 5:
+        {
             std::cout<<"As you roam the forest searching for items,\n";
             std::cout<<"you come across a dismembered carcass.\n";
             std::cout<<"Out of fear, you slowly back away from the location ";
             std::cout<<"run away.\n";
 
             break;
+        }
+
+        default:
+        {
+            break;
+        }
     }
     
 }
@@ -85,8 +100,8 @@ void Forest::eatMushroom()
         loseHealth();
         std::cout<<"You decide to eat the strange mushroom...\n";
         std::cout<<"You feel fine at first...and then fall to the ground,";
-        std::cout<<" unconscious.\nAfter a while, you wake up with the 
-        std::cout<<"feeling as if you lost some life.\n"
+        std::cout<<" unconscious.\nAfter a while, you wake up with the ";
+        std::cout<<"feeling as if you lost some life.\n";
     }
     else
     {

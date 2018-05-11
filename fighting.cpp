@@ -153,10 +153,6 @@ void fighting::getMonsters(std::string weakMonst1, std::string weakMonst2,
 
 }
 
-double fighting::statBoost()
-{
-    double 
-}
 
 
 

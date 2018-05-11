@@ -148,7 +148,7 @@ int main()
 
                 if(input == "1" && searchCount < 2)
                 {
-                    searchForTreasure();
+                    castleArea.searchForTreasure();
                     searchCount++;
                 }
                 else if(input == "2" || searchCount >= 2)
