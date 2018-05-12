@@ -15,7 +15,7 @@ int main()
 
     do
     {
-        cout<<"Welcome to Adventure Quest! \n\nType a number:\n";
+        cout<<"\nWelcome to Adventure Quest! \n\nType a number:\n";
         cout<<"(1) Go through the tutorial (2) get straight into the game?";
         cin>>input;
         if(input == "1")
@@ -28,7 +28,7 @@ int main()
 
     do
     {
-        cout<<"Where would you like to go?\n Type a number:";
+        cout<<"Where would you like to go?\nType a number:";
         cout<<"(1) Go to Town (2) Go to the Forest (3) Go into the Dungeon\n";
         cout<<"(4) Go into the Castle (5) View your Stats (6) Save your game ";
         cout<<"(7) Quit the game\n";
@@ -75,7 +75,7 @@ int main()
             do
             {
                 cout<<"Would you like to (1)Search the forest for items (2) Fight ";
-                cout<<"monsters?\n";
+                cout<<"monsters (3) Use a potion";
                 cin>>input;
             
                 if(input == "1")
@@ -93,6 +93,10 @@ int main()
                     input = game.stayOrGo();
 
                 }
+                else if(input == "3")
+                {
+                    game.usePotion();
+                }
                 else
                 {
                     cout<<"Please enter valid input.\n";
@@ -108,18 +112,30 @@ int main()
             game.getMonsters("Zombie", "Slime", "Dragon");
             
             cout<<"You have arrived at the Dungeon.\n";
-
-            do
+            cout<<"What would you like to do? (1) Fight Monsters (2) Use potion\n";
+            cin>>input;
+            if(input == "1")
             {
-                string enemy = " ";
+                do
+                {
+                    string enemy = " ";
 
-                enemy = game.randomMonster();
+                    enemy = game.randomMonster();
 
-                game.encounterMonster(enemy);
+                    game.encounterMonster(enemy);
 
-                input = game.stayOrGo();
+                    input = game.stayOrGo();
 
-            }while(input != "2");
+                }while(input != "2");
+            }
+            else if (input == "2")
+            {
+                game.usePotion();   
+            }
+            else
+            {
+                cout<<"Please enter Valid input\n";
+            }
 
         }
         else if(input == "4")//castle
@@ -135,6 +151,7 @@ int main()
             {
                 cout<<"Would you like to: (1) Search the castle for treasure";
                 cout<<" (2) Battle the inhabitants of the castle? \n";
+                cout<<"(3) Use a potion\n";
                 cin>>input;
 
                 if(input == "1" && searchCount < 2)
@@ -159,7 +176,11 @@ int main()
                     }
 
                 }
-                else
+                else if(input == "3")
+                {
+                    game.usePotion();
+                }
+                else 
                 {
                     cout<<"Please enter valid input.";
                 }

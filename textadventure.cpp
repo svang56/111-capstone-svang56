@@ -29,6 +29,7 @@ Adventure::Adventure()
     money = 25;
     levels = 0;
     experience = 0;
+    potions = 0;
 }
 
 void Adventure::loadGame()
@@ -43,9 +44,12 @@ void Adventure::saveGame()
 
 void Adventure::restoreHealth(std::vector<std::string> vector)
 {
+    playerHealth = 0;
+
     for(int i = 0; i < vector.size(); i++)
     {
         vector[i] = "FILLED";
+        playerHealth++;
     }
 
 }
@@ -134,6 +138,8 @@ void Adventure::viewStats()
     std::cout<<"Your willpower level is: "<<will<<std::endl;
     std::cout<<"Your wisdom level is: "<<wisdom<<std::endl;
     std::cout<<"Your experience amount is: ("<<experience<<"/100)\n";
+    std::cout<<"You have "<<money<<" gold.\n";
+    std::cout<<"You have "<<potions<<" potions.\n";
 }
 
 void Adventure::checkHealth()
@@ -258,7 +264,8 @@ void Adventure::encounterMonster(std::string monsterName)
     }
     else
     {
-        std::cout<<"You ran away from the "<<monsterName<<"and escaped.\n";
+        std::cout<<"You realize you do not have enough health to fight\n";
+        std::cout<<"You run away from the "<<monsterName<<" and escape.\n";
     }
     
     levelUp();
@@ -406,6 +413,7 @@ void Adventure::searchForest()
             
             std::cout<<"You found a strange mushroom.\n";
             std::cout<<"What do you want to do? (1) Eat it (2) Throw it away\n";
+            std::cin>>input;
 
             if( input == "1")
             {
@@ -458,6 +466,13 @@ void Adventure::eatMushroom()
         std::cout<<"You feel fine at first...and then fall to the ground,";
         std::cout<<" unconscious.\nAfter a while, you wake up with the ";
         std::cout<<"feeling as if you lose some life.\n";
+    }
+    else
+    {
+        restoreOneHealth();
+        std::cout<<"You decide to eat the strange mushroom...\n";
+        std::cout<<"As you eat the mustroom, you immediately begin to ";
+        std::cout<<"feel revitalized.\n";
     }
 
 }
