@@ -1,12 +1,7 @@
 //Author: Sunny Vang
 #include<iostream>
-#include<vector>
 #include <string>
-#include "fighting.h"
-#include "forest.h"
-#include "town.h"
-#include "dungeon.h"
-#include "castle.h"
+#include "textadventure.h"
 
 const int reset = 0;
 
@@ -41,7 +36,6 @@ int main()
 
         if(input == "1")//town
         {
-            Town townArea;
 
             do
             {
@@ -53,15 +47,15 @@ int main()
 
                 if(input == "1")
                 {
-                    townArea.shopping();
+                    game.shopping();
                 }
                 else if(input == "2")
                 {
-                    townArea.goToInn();
+                    game.goToInn();
                 }
                 else if (input == "3")
                 {
-                    townArea.viewStats();
+                    game.viewStats();
                 }
                 else
                 {
@@ -73,9 +67,8 @@ int main()
         }
         else if(input == "2")//-------------forest
         {   
-            Forest forestArea;
 
-            forestArea.getMonsters("Goblin", "Wolf", "Black Bear");
+            game.getMonsters("Goblin", "Wolf", "Black Bear");
 
             cout<<"You have arrived at the Forest.\n";
 
@@ -87,17 +80,17 @@ int main()
             
                 if(input == "1")
                 {
-                    forestArea.searchForest();
+                    game.searchForest();
                 }
                 else if(input == "2")
                 {
                     string enemy = " ";
 
-                    enemy = forestArea.randomMonster();
+                    enemy = game.randomMonster();
 
-                    forestArea.encounterMonster(enemy);
+                    game.encounterMonster(enemy);
               
-                    input = forestArea.stayOrGo();
+                    input = game.stayOrGo();
 
                 }
                 else
@@ -111,9 +104,8 @@ int main()
         }
         else if(input == "3")//dungeon
         {
-            Dungeon dungeonArea;
 
-            dungeonArea.getMonsters("Zombie", "Slime", "Dragon");
+            game.getMonsters("Zombie", "Slime", "Dragon");
             
             cout<<"You have arrived at the Dungeon.\n";
 
@@ -121,26 +113,24 @@ int main()
             {
                 string enemy = " ";
 
-                enemy = dungeonArea.randomMonster();
+                enemy = game.randomMonster();
 
-                dungeonArea.encounterMonster(enemy);
+                game.encounterMonster(enemy);
 
-                input = dungeonArea.stayOrGo();
+                input = game.stayOrGo();
 
             }while(input != "2");
-            //must be level 5 to fight dragon
-            //stats dictate win rate for all fights
+
         }
         else if(input == "4")//castle
         {
-            Castle castleArea;
 
-            castleArea.getMonsters("Guard", "Magician", "Black Knight");
+            game.getMonsters("Guard", "Magician", "Black Knight");
 
             int searchCount = 0;
 
-
             cout<<"You have arrived at the Castle\n";
+
             do
             {
                 cout<<"Would you like to: (1) Search the castle for treasure";
@@ -149,7 +139,7 @@ int main()
 
                 if(input == "1" && searchCount < 2)
                 {
-                    castleArea.searchForTreasure();
+                    game.searchForTreasure();
                     searchCount++;
                 }
                 else if(input == "2" || searchCount >= 2)
@@ -157,11 +147,11 @@ int main()
 
                     string enemy = " ";
 
-                    enemy = castleArea.randomMonster();
+                    enemy = game.randomMonster();
 
-                    castleArea.encounterMonster(enemy);
+                    game.encounterMonster(enemy);
 
-                    input = castleArea.stayOrGo();
+                    input = game.stayOrGo();
 
                     if(searchCount >= 2)
                     {
