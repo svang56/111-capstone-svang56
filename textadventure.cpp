@@ -8,16 +8,16 @@
 #include<time.h>
 //fighting constants
 const int bossMoney = 50;
-const int bossExp = 20;
+const int bossExp = 70;
 const int regMoney = 10;
-const int regExp = 10;
-const int baseBossPercent = 15;
-const int baseRegPercent = 45;
+const int regExp = 40;
+const int baseBossPercent = 40;
+const int baseRegPercent = 50;
 //adventure constants
 const double reset = 0;
 const double boostStr = 2;
 
-Adventure::Adventure()
+Adventure::Adventure()//initialize stats when player begins game
 {
     
     health.resize(5);
@@ -32,29 +32,27 @@ Adventure::Adventure()
     potions = 0;
 }
 
-void Adventure::loadGame()
-{
-//pull shit from file
-}
-
-void Adventure::saveGame()
-{
-//delete stuff in file and then put numbers in
-}
-
 void Adventure::restoreHealth(std::vector<std::string> vector)
+//replaces health vector with "FILLED"
 {
-    playerHealth = 0;
-
-    for(int i = 0; i < vector.size(); i++)
+    if( potions > 0)
     {
-        vector[i] = "FILLED";
-        playerHealth++;
+        playerHealth = 0;
+
+        for(int i = 0; i < vector.size(); i++)
+        {
+            vector[i] = "FILLED";
+            playerHealth++;
+        }
+    }
+    else
+    {
+        std::cout<<"You do not have any potions.\n";
     }
 
 }
 
-void Adventure::restoreOneHealth()
+void Adventure::restoreOneHealth()//replaces one "EMPTY" with "FILLED" in health vector
 {
     int i = 0;
     while(health[i] == "FILLED" && i< health.size())
@@ -74,7 +72,7 @@ void Adventure::restoreOneHealth()
 
 }
 
-void Adventure::loseHealth()
+void Adventure::loseHealth()//searches for first "FILLED" and replaces with "EMPTY"
 {
     int i = 0;
 
@@ -93,24 +91,34 @@ void Adventure::loseHealth()
     }
 }
 
-void Adventure::levelUp()
+void Adventure::levelUp()//update stats based on experience amount
 {
-//after everybattle, include this. 
     if(experience >= 100)
-    {//this resets counter to 0. Adds extra experience to next level
+    {
         double temp = 0;
+
         experience -= 100;
+
         temp = experience;
+
         experience = reset;
+
         experience += temp;
+
         levels++;
+
         strength += 2;
+
         will += 2;
+
         wisdom += 1;
+
         health.push_back("EMPTY");
+
 
         std::cout<<"Congradulations! You have leveled up!\n";
         std::cout<<"Your stats have increased.\n";
+
         viewStats();
     }
 
@@ -119,27 +127,39 @@ void Adventure::levelUp()
 void Adventure::usePotion()
 {
     restoreHealth(health);
+
     potions--;
 }
 
-void Adventure::showIntroduction()
-{
-}
 
 void Adventure::displayTutorial()
 {
+    std::cout<<"\nWelcome to Adventure Quest Again!. The objective of this game\n";
+    std::cout<<"is to travel through the lands to find and defeat the evil Dragon.\n";
+    std::cout<<"However, you must be first defeat monsters in order to become ";
+    std::cout<<"stronger before\nyou can battle the Dragon.\n";
+    std::cout<<"\nAlso, you have health, so you must drink a potion if your";
+    std::cout<<" health runs low.\n Besides that, go and explore the areas!\n";
 }
 
 void Adventure::viewStats()
 {
     std::cout<<"You are level: "<<levels<<std::endl;
+
     std::cout<<"Your health is: ("<<playerHealth<<"/"<<health.size()<<").\n";
+
     std::cout<<"Your strength level is: "<<strength<<std::endl;
+
     std::cout<<"Your willpower level is: "<<will<<std::endl;
+
     std::cout<<"Your wisdom level is: "<<wisdom<<std::endl;
+
     std::cout<<"Your experience amount is: ("<<experience<<"/100)\n";
+
     std::cout<<"You have "<<money<<" gold.\n";
+
     std::cout<<"You have "<<potions<<" potions.\n";
+
 }
 
 void Adventure::checkHealth()
@@ -160,11 +180,8 @@ void Adventure::checkHealth()
     
     playerHealth = healthCount;
 
-    
 }
 
-///////////////////////////////////////////////////////////////////////////////
-//begin fighting functions
 
 bool Adventure::battleChance(std::string monsterName)
 {
@@ -177,18 +194,21 @@ bool Adventure::battleChance(std::string monsterName)
     double monstWinPercent = baseRegPercent;
     //next two lines increase win percent when battling
 
-    bossWinPercent += ((strength + wisdom + will) * .5);
-    monstWinPercent += ((strength + wisdom + will) * .5);
+    bossWinPercent += ((strength + wisdom + will) * .5);//adjusts win rate against
+    monstWinPercent += ((strength + wisdom + will) * .5);//boss and regular monsters
+                                                         //based on stats
     
-    if((monsterName == "Dragon" || monsterName == "Black Knight" 
-        || monsterName == "Black Bear") && levels >= 5)
+    if((monsterName == "Dragon" || monsterName == "Black_Knight" 
+        || monsterName == "Black_Bear"))
     {
         if(levels >= 5)
         {
             if( winPercentage <= bossWinPercent)
             {
                 money += (rand()%bossMoney + 20);
+                
                 experience += (rand()%bossExp + 50);
+
                 return true;
             }
             else
@@ -199,7 +219,9 @@ bool Adventure::battleChance(std::string monsterName)
         else
         {
             std::cout<<"As you approach the "<<monsterName<<", you realize you\n";
+
             std::cout<<"may not be strong enough to defeat the "<<monsterName<<".\n";
+
             return false;
         }
 
@@ -210,7 +232,9 @@ bool Adventure::battleChance(std::string monsterName)
         if( winPercentage <= monstWinPercent)
         {
             money += (rand()%regMoney + 10);
+
             experience += (rand()%regExp + 15);
+
             return true;
         }
         else
@@ -236,6 +260,7 @@ bool Adventure::fightOrRun(std::string input)
 void Adventure::encounterMonster(std::string monsterName)
 {
     std::string input = " ";
+
     bool result = false;
 
     std::cout<<"You have encountered a "<<monsterName<<".\n";
@@ -258,6 +283,7 @@ void Adventure::encounterMonster(std::string monsterName)
             else
             {
                 loseHealth();
+
                 std::cout<<"You lose the battle and lose 1 health\n";
             }
         }
@@ -265,6 +291,7 @@ void Adventure::encounterMonster(std::string monsterName)
     else
     {
         std::cout<<"You realize you do not have enough health to fight\n";
+
         std::cout<<"You run away from the "<<monsterName<<" and escape.\n";
     }
     
@@ -287,6 +314,7 @@ std::string Adventure::randomMonster()
     srand(time(NULL));
     
     int randomNumber = 0;
+
     randomNumber = rand()%100 + 1;
 
     if(randomNumber <= 30)
@@ -307,12 +335,12 @@ void Adventure::getMonsters(std::string weakMonst1, std::string weakMonst2,
                             std::string bossMonst)
 {
     regMonster1 = weakMonst1;
+
     regMonster2 = weakMonst2;
+
     bossMonster = bossMonst;
 }
-///////////////////////////////////////////end of fighting.cpp//////////////////////
 
-//////////////////////begin Town.CPP/////////
 void Adventure::shopping()
 {
     std::string input = " ";
@@ -329,7 +357,9 @@ void Adventure::shopping()
             if(money >= 25)
             {
                 money -= 25;
+
                 potions++;
+
                 std::cout<<"Your current money amount: "<<money<<std::endl;
             }
             else
@@ -355,7 +385,7 @@ void Adventure::goToInn()
     do
     {
         std::cout<<"Welcome to the Inn! \n";
-        std::cout<<"It will cost you 25 gold to sleep and reconver all of your health.\n";
+        std::cout<<"It will cost you 25 gold to sleep and recover all of your health.\n";
         std::cout<<"Enter a number: (1) Yes (2) No\n";
         std::cin>>input;
 
@@ -364,6 +394,7 @@ void Adventure::goToInn()
             if(money >= 25)
             {
                 money -= 25;
+
                 restoreHealth(health);
             }
             else
@@ -387,6 +418,7 @@ void Adventure::searchForest()
     int randomChance = 0;
 
     srand(time(NULL));
+
     randomChance = rand()%5 + 1;
 
     switch(randomChance)
@@ -394,16 +426,22 @@ void Adventure::searchForest()
         case 1:
         {
             potions++;
+
             std::cout<<"You found a potion as you were roaming the forest.\n";
+
             break;
         }
 
         case 2:
         {
             int moneyFound = 0;
+
             moneyFound = rand()%2 + 1;
+
             money += moneyFound;
+
             std::cout<<"You find "<<moneyFound<<" gold on the ground\n";
+
             break;
         }
 
@@ -418,12 +456,14 @@ void Adventure::searchForest()
             if( input == "1")
             {
                 eatMushroom();
+
                 break;
             }
             else
             {
                 std::cout<<"You decide to leave the strange mushroom where you ";
                 std::cout<<"found it.\n";
+
                 break;
             }
         }
@@ -441,6 +481,7 @@ void Adventure::searchForest()
             std::cout<<"you come across a dismembered carcass.\n";
             std::cout<<"Unsure whether it may be an animal or corpse,\n";
             std::cout<<"you slowly back away from the location and run away.\n";
+
             break;
         }
         
@@ -456,6 +497,7 @@ void Adventure::eatMushroom()
     srand(time(NULL));
 
     int randomChance = 0;
+
     randomChance = rand()%100 + 1;
 
     if(randomChance <= 50)
@@ -470,6 +512,7 @@ void Adventure::eatMushroom()
     else
     {
         restoreOneHealth();
+
         std::cout<<"You decide to eat the strange mushroom...\n";
         std::cout<<"As you eat the mustroom, you immediately begin to ";
         std::cout<<"feel revitalized.\n";
@@ -486,6 +529,7 @@ void Adventure::searchForTreasure()
     if(randomChance <= 40)
     {
         int randomGoldAmt = 0;
+
         randomGoldAmt = rand()%20 + 10;
 
         money += randomGoldAmt;
