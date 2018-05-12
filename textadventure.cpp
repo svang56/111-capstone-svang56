@@ -181,11 +181,106 @@ bool Adventure::battleChance(std::string monsterName)
         {
             if( winPercentage <= bossWinPercent)
             {
-                money +=
+                money += (rand()%bossMoney + 20);
+                experience += (rand()%bossExp + 50);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            std::cout<<"As you approach the "<<monsterName<<", you realize you\n";
+            std::cout<<"may not be strong enough to defeat the "<<monsterName<<".\n";
+            return false:
+        }
 
 
+    }
+    else
+    {
+        if( winPercentage <= monstWinPercent)
+        {
+            money += (rand()%regMoney + 10);
+            experience += (rand()regExp + 15);
+            return true
+        }
+        else
+        {
+            return false;
+        }
+    }
 
 }
+bool Adventure::fightOrRun(std::string input)
+{
+    if(input == "1")
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+
+}
+
+void Adventure::encounterMOnster(std::string monsterName)
+{
+    std::string input = " ";
+    bool result = false;
+
+    std::cout<<"You have encountered a "<<monsterName<<".\n";
+    std::cout<<"Would you like to fight the "<<monsterName<<" or run?\n";
+    std::cout<<"Type (1) to Fight or (2) to run away. \n";
+    std::cin>>input;
+
+    result = fightOrRun(input);
+
+    if(playerHealth > 0)
+    {
+        if(result == true)
+        {
+            result = battleChance(monsterName);
+
+            if(result == true)
+            {
+                std::cout<<"You have defeated the "<<monsterName<<std::endl;
+            }
+            else
+            {
+                loseHealth();
+                std::cout<<"You lose the battle and lose 1 health\n";
+            }
+        }
+    }
+    else
+    {
+        std::cout<<"You ran away from the "<<monsterName<<"and escaped.\n";
+    }
+    
+    levelUp();
+}
+
+std::string Adventure::stayOrGo()
+{
+    std::string input = " ";
+
+    std::cout<<"Please enter a number:\n";
+    std::cout>>"Would you like to: (1) Stay (2) Leave this loccation?\n";
+    std::cin>>input;
+
+    return input;
+}
+
+std::string Adventure randomMonster()
+{
+    srand(time(NULL));
+
+
+
 
 
 
