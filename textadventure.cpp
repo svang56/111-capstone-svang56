@@ -278,9 +278,102 @@ std::string Adventure::stayOrGo()
 std::string Adventure randomMonster()
 {
     srand(time(NULL));
+    
+    int randomNumber = 0;
+    randomNumber = rand()100 + 1;
 
+    if(randomNumber <= 30)
+    {
+        return bossMonster;
+    }
+    else if( randomNumber <= 60 && randomNumber > 30)
+    {
+        return regMonster1;
+    }
+    else if(randomNumber > 60)
+    {
+        return regMonster2;
+    }
+}
 
+void Adventure::getMonsters(std::string weakMonst1, std::string weakMonst2,
+                            std::string bossMonst)
+{
+    regMonster1 = weakMonst1;
+    regMonster2 = weakMonst2;
+    bossMonster = bossMonst;
+}
+///////////////////////////////////////////end of fighting.cpp//////////////////////
 
+//////////////////////begin Town.CPP/////////
+void Adventure::shopping()
+{
+    std::string input = " ";
+
+    do
+    {
+        std::cout<<"Welcome to the shop! \n";
+        std::cout<<"Would you like to buy a potion? It will cost you 25 gold.\n";
+        std::cout<<"Enter a number: (1) Yes (2) No\n";
+        std::cin>>input;
+
+        if(input == "1")
+        {
+            if(money >= 25)
+            {
+                money -= 25;
+                potions++;
+                std::cout<<"Your current money amount: "<<money<<std::endl;
+            }
+            else
+            {
+                std::cout<<"You do not have enough money. \n";
+            }
+        }
+        else if(input == "2")
+        {
+            std::cout<<"You decide not to buy a potion and leave the shop\n";
+        }
+        else
+        {
+            std::cout<<"Please enter valid input.\n";
+        }
+    }while(input != "2";
+}
+
+void Adventure::goToInn()
+{
+    std::string input = " ";
+
+    do
+    {
+        std::cout<<"Welcome to the Inn! \n";
+        std::cout<<"It will cost you 25 gold to sleep and reconver all of your health.\n";
+        std::cout<<"Enter a number: (1) Yes (2) No\n";
+        std::cin>>input;
+
+        if(input == "1")
+        {
+            if(money >= 25)
+            {
+                money -= 25;
+                restoreHealth(health);
+            }
+            else
+            {
+                std::cout<<"You do not have enough money.\n";
+            }
+        }
+        else if(input == "2")
+        {
+            std::cout<<"You decide not to rest at the Inn and leave.\n";
+        }
+        else
+        {
+            std::cout<<"Please enter valid input.\n";
+        }
+    }while(input != "2");
+}
 
 
 
