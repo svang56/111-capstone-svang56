@@ -375,6 +375,25 @@ void Adventure::goToInn()
     }while(input != "2");
 }
 
+void Adventure::searchForTreasure()
+{
+    srand(time(NULL));
 
+    int randomChance = rand()%100 + 1;
 
+    if(randomChance <= 40)
+    {
+        int randomGoldAmt = 0;
+        randomGoldAmt = rand()%20 + 10;
 
+        money += randomGoldaAmt;
+
+        std::cout<<"You search the castle and was able to find a chest that\n";
+        std::cout<<"contained "<<randomGoldAmt<<" gold.\n";
+    }
+    else
+    {
+        std::cout<<"You were unable to find anything of value in your search.\n";
+    }
+
+}
