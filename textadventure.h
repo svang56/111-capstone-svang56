@@ -19,6 +19,7 @@ class Adventure
         double levels;
         double experience;
         double playerHealth;
+        //fighting variables
     
     public:
        Adventure();//initialize stats then use load game to get stats
@@ -34,11 +35,25 @@ class Adventure
        void displayTutorial();
        void viewStats();
 
-       //forest
-       //castle
-            //steal stuff in castle
-       //dungeon
+       //fighting
+         bool battleChance(std::string);
+         bool fightOrRun(std::string);
+         void encounterMonster(std::string);
+         std::string stayOrGo();
+         std::string randomMonster();
+         void getMonsters(std::string, std::string, std::string);
 
+       //town
+         void shopping();
+         void goToInn();
+       //forest
+         void searchForest();
+         void eatMushroom();
+
+       //dungeon
+    //no exclusive functions for dungeon
+       //castle
+        void searchForTreasure();
 
 
 
