@@ -20,7 +20,9 @@ class Adventure
         double experience;
         double playerHealth;
         //fighting variables
-    
+        std::string regMonster1;
+        std::string regMonster2;
+        std::string bossMonster;
     public:
        Adventure();//initialize stats then use load game to get stats
        void loadGame();
@@ -28,12 +30,12 @@ class Adventure
        void restoreHealth(std::vector<std::string>);
        void restoreOneHealth();
        void loseHealth();
-       void checkHealth();
        void levelUp();
        void usePotion();
        void showIntroduction();
        void displayTutorial();
        void viewStats();
+       void checkHealth();
 
        //fighting
          bool battleChance(std::string);
@@ -51,7 +53,8 @@ class Adventure
          void eatMushroom();
 
        //dungeon
-    //no exclusive functions for dungeon
+       //no exclusive functions for dungeon
+      
        //castle
         void searchForTreasure();
 
