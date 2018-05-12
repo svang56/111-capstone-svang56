@@ -25,19 +25,16 @@ class Adventure
         std::string bossMonster;
     public:
        Adventure();//initialize stats then use load game to get stats
-       void loadGame();
-       void saveGame();
        void restoreHealth(std::vector<std::string>);
        void restoreOneHealth();
        void loseHealth();
        void levelUp();
        void usePotion();
-       void showIntroduction();
        void displayTutorial();
        void viewStats();
        void checkHealth();
 
-       //fighting
+       //battle functions
          bool battleChance(std::string);
          bool fightOrRun(std::string);
          void encounterMonster(std::string);
@@ -45,17 +42,17 @@ class Adventure
          std::string randomMonster();
          void getMonsters(std::string, std::string, std::string);
 
-       //town
+       //town functions
          void shopping();
          void goToInn();
-       //forest
+
+       //forest functions
          void searchForest();
          void eatMushroom();
 
-       //dungeon
-       //no exclusive functions for dungeon
+       //no exclusive dungeon functions
       
-       //castle
+       //castle function
         void searchForTreasure();
 
 

@@ -124,7 +124,7 @@ void Adventure::levelUp()//update stats based on experience amount
 
 }
  
-void Adventure::usePotion()
+void Adventure::usePotion()//uses a potion and resets health vector to all "FILLED"
 {
     restoreHealth(health);
 
@@ -132,7 +132,7 @@ void Adventure::usePotion()
 }
 
 
-void Adventure::displayTutorial()
+void Adventure::displayTutorial()//prints tutorial
 {
     std::cout<<"\nWelcome to Adventure Quest Again!. The objective of this game\n";
     std::cout<<"is to travel through the lands to find and defeat the evil Dragon.\n";
@@ -142,7 +142,7 @@ void Adventure::displayTutorial()
     std::cout<<" health runs low.\n Besides that, go and explore the areas!\n";
 }
 
-void Adventure::viewStats()
+void Adventure::viewStats()//displays the statistics of player
 {
     std::cout<<"You are level: "<<levels<<std::endl;
 
@@ -162,7 +162,7 @@ void Adventure::viewStats()
 
 }
 
-void Adventure::checkHealth()
+void Adventure::checkHealth()//looks at health user has
 {
     std::string healthCheck = " ";
 
@@ -182,8 +182,8 @@ void Adventure::checkHealth()
 
 }
 
-
 bool Adventure::battleChance(std::string monsterName)
+//determines if player wins/loses battle
 {
     srand(time(NULL));
 
@@ -245,6 +245,7 @@ bool Adventure::battleChance(std::string monsterName)
 
 }
 bool Adventure::fightOrRun(std::string input)
+//determines if user wants to run or stay to fight monster
 {
     if(input == "1")
     {
@@ -258,6 +259,7 @@ bool Adventure::fightOrRun(std::string input)
 }
 
 void Adventure::encounterMonster(std::string monsterName)
+//goes through options to battle monsters
 {
     std::string input = " ";
 
@@ -298,7 +300,7 @@ void Adventure::encounterMonster(std::string monsterName)
     levelUp();
 }
 
-std::string Adventure::stayOrGo()
+std::string Adventure::stayOrGo()//asks user if want to stay at area
 {
     std::string input = " ";
 
@@ -309,7 +311,7 @@ std::string Adventure::stayOrGo()
     return input;
 }
 
-std::string Adventure::randomMonster()
+std::string Adventure::randomMonster()//randomly generates monster to encounter
 {
     srand(time(NULL));
     
@@ -333,6 +335,7 @@ std::string Adventure::randomMonster()
 
 void Adventure::getMonsters(std::string weakMonst1, std::string weakMonst2,
                             std::string bossMonst)
+//gets strings from int main() and initializes monsters in specific areas
 {
     regMonster1 = weakMonst1;
 
@@ -341,7 +344,7 @@ void Adventure::getMonsters(std::string weakMonst1, std::string weakMonst2,
     bossMonster = bossMonst;
 }
 
-void Adventure::shopping()
+void Adventure::shopping()//goes through shopping options
 {
     std::string input = " ";
 
@@ -378,7 +381,7 @@ void Adventure::shopping()
     }while(input != "2");
 }
 
-void Adventure::goToInn()
+void Adventure::goToInn()//goes through options in Inn
 {
     std::string input = " ";
 
@@ -413,7 +416,7 @@ void Adventure::goToInn()
     }while(input != "2");
 }
 
-void Adventure::searchForest()
+void Adventure::searchForest()//randomly generates items when searching forest
 {
     int randomChance = 0;
 
@@ -492,7 +495,7 @@ void Adventure::searchForest()
     }
 }
 
-void Adventure::eatMushroom()
+void Adventure::eatMushroom()//random chance to lose/gain health when eat mushroom
 {
     srand(time(NULL));
 
@@ -520,7 +523,7 @@ void Adventure::eatMushroom()
 
 }
 
-void Adventure::searchForTreasure()
+void Adventure::searchForTreasure()//randomly determines if find chest with gold
 {
     srand(time(NULL));
 
