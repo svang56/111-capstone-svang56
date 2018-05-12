@@ -15,6 +15,7 @@ using namespace std;
 int main()
 {
     string input = " ";
+
     Adventure game;
 
     do
@@ -34,7 +35,7 @@ int main()
     {
         cout<<"Where would you like to go?\n Type a number:";
         cout<<"(1) Go to Town (2) Go to the Forest (3) Go into the Dungeon\n";
-        cout<<"(4) Go into the Castle (5) View your Stats (6) Save your game\n";
+        cout<<"(4) Go into the Castle (5) View your Stats (6) Save your game ";
         cout<<"(7) Quit the game\n";
         cin>>input;
 
@@ -80,7 +81,7 @@ int main()
 
             do
             {
-                cout<<"Would you like to search the forest for items or fight ";
+                cout<<"Would you like to (1)Search the forest for items (2) Fight ";
                 cout<<"monsters?\n";
                 cin>>input;
             

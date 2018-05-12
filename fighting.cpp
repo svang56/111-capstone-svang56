@@ -29,21 +29,32 @@ bool fighting::battleChance(std::string monsterName)
 
     winPercentage = rand()%100 + 1;
 
-    if(monsterName == "Dragon" || monsterName == "Black Knight" || monsterName == "Black Bear")
+    if((monsterName == "Dragon" || monsterName == "Black Knight" || monsterName == "Black Bear") && levels >= 5)
     {
-        if( winPercentage <= bossWinPercent)
+        if(levels >= 5)
         {
-            money =+ (rand()%bossMoney + 20);
-            experience += (rand()%bossExp + 50);
-            return true;
+            if( winPercentage <= bossWinPercent)
+            {
+                money =+ (rand()%bossMoney + 20);
+                experience += (rand()%bossExp + 50);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         else
         {
+            std::cout<<"As you approach the "<<monsterName<<", you realize you\n";
+            std::cout<<"may not be strong enough to defeat the "<<monsterName<<"\n";
             return false;
         }
+    
     }
     else
     {
+
         if( winPercentage <= monstWinPercent)
         {   
             money += (rand()%regMoney + 10);
