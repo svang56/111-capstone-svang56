@@ -14,22 +14,36 @@ const int regExp = 40;
 const int baseBossPercent = 40;
 const int baseRegPercent = 50;
 //adventure constants
+
 const double reset = 0;
 const double boostStr = 2;
+const int potionAndInnCost = 25;
+const int strAndWillGain = 2;
+const int wisGain = 1;
+const int expReset = 100;
+//player stat constants
+const int baseStr = 0;
+const int baseWill = 0;
+const int baseWis = 0;
+const int baseLevels = 0;
+const int basePot = 0;
+const int baseExp = 0;
+const int baseMoney = 25;
+const int baseHealth = 5;
 
 Adventure::Adventure()//initialize stats when player begins game
 {
     
-    health.resize(5);
+    health.resize(baseHealth);
     playerHealth = health.size();
     restoreHealth(health);
-    strength = 0;
-    will = 0;
-    wisdom = 0;
-    money = 25;
-    levels = 0;
-    experience = 0;
-    potions = 0;
+    strength = baseStr;
+    will = baseWill;
+    wisdom = baseWis;
+    money = baseMoney;
+    levels = baseLevels;
+    experience = baseExp;
+    potions = basePot;
 }
 
 void Adventure::restoreHealth(std::vector<std::string> vector)
@@ -93,11 +107,11 @@ void Adventure::loseHealth()//searches for first "FILLED" and replaces with "EMP
 
 void Adventure::levelUp()//update stats based on experience amount
 {
-    if(experience >= 100)
+    if(experience >= expReset)
     {
         double temp = 0;
 
-        experience -= 100;
+        experience -= expReset;
 
         temp = experience;
 
@@ -107,11 +121,11 @@ void Adventure::levelUp()//update stats based on experience amount
 
         levels++;
 
-        strength += 2;
+        strength += strAndWillGain;
 
-        will += 2;
+        will += strAndWillGain;
 
-        wisdom += 1;
+        wisdom += wisGain;
 
         health.push_back("EMPTY");
 
@@ -198,10 +212,10 @@ bool Adventure::battleChance(std::string monsterName)
     monstWinPercent += ((strength + wisdom + will) * .5);//boss and regular monsters
                                                          //based on stats
     
-    if((monsterName == "Dragon" || monsterName == "Black_Knight" 
-        || monsterName == "Black_Bear"))
+    if((monsterName == "Dragon" || monsterName == "Black_Knight"))
+        //these monsters are bosses and have different rewards
     {
-        if(levels >= 5)
+        if(levels >= 3)
         {
             if( winPercentage <= bossWinPercent)
             {
@@ -216,7 +230,7 @@ bool Adventure::battleChance(std::string monsterName)
                 return false;
             }
         }
-        else
+        else//if too low level then player runs from boss
         {
             std::cout<<"As you approach the "<<monsterName<<", you realize you\n";
 
@@ -227,9 +241,9 @@ bool Adventure::battleChance(std::string monsterName)
 
 
     }
-    else
+    else//fighting regular monsters
     {
-        if( winPercentage <= monstWinPercent)
+        if( winPercentage <= monstWinPercent)//determines win chance for regular monsters
         {
             money += (rand()%regMoney + 10);
 
@@ -305,7 +319,7 @@ std::string Adventure::stayOrGo()//asks user if want to stay at area
     std::string input = " ";
 
     std::cout<<"Please enter a number:\n";
-    std::cout<<"Would you like to: (1) Stay (2) Leave this loccation?\n";
+    std::cout<<"Would you like to: (1) Stay (2) Leave this location?\n";
     std::cin>>input;
 
     return input;
@@ -357,9 +371,9 @@ void Adventure::shopping()//goes through shopping options
 
         if(input == "1")
         {
-            if(money >= 25)
+            if(money >= potionAndInnCost)
             {
-                money -= 25;
+                money -= potionAndInnCost;
 
                 potions++;
 
@@ -394,9 +408,9 @@ void Adventure::goToInn()//goes through options in Inn
 
         if(input == "1")
         {
-            if(money >= 25)
+            if(money >= potionAndInnCost)
             {
-                money -= 25;
+                money -= potionAndInnCost;
 
                 restoreHealth(health);
             }

@@ -80,7 +80,7 @@ int main()
             do
             {
                 cout<<"Would you like to (1)Search the forest for items (2) Fight ";
-                cout<<"monsters (3) Use a potion (4) Leave this area";
+                cout<<"monsters\n(3) Use a potion (4) Leave this area";
                 cin>>input;
             
                 if(input == "1")//searches forest for items
@@ -160,7 +160,7 @@ int main()
 
             do
             {
-                cout<<"Would you like to: (1) Search the castle for treasure";
+                cout<<"Would you like to: (1) Search the castle for treasure\n";
                 cout<<" (2) Battle the inhabitants of the castle? \n";
                 cout<<"(3) Use a potion (4) Leave this Area\n";
                 cin>>input;
