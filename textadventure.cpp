@@ -1,7 +1,19 @@
 //Author: Sunny Vang
+
 #include<iostream>
 #include<string>
 #include"textadventure.h"
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+//fighting constants
+const int bossMoney = 50;
+const int bossExp = 20;
+const int regMoney = 10;
+const int regExp = 10;
+const int baseBossPercent = 15;
+const int baseRegPercent = 45;
+//adventure constants
 const double reset = 0;
 const double boostStr = 2;
 
@@ -145,6 +157,35 @@ void Adventure::checkHealth()
     
 }
 
+///////////////////////////////////////////////////////////////////////////////
+//begin fighting functions
+
+bool Adventure::battleChance(std::string monsterName)
+{
+    srand(time(NULL));
+
+    int winPercentage = 0;
+    winPercent = rand()%100 + 1;
+    
+    double bossWinPercent = baseBossPercent;
+    double monstWinPercent = baseRegPercent;
+    //next two lines increase win percent when battling
+
+    bossWinPercent += ((strength + wisdom + will) * .5);
+    monstWinPercent += ((strength + wisdom + will) * .5);
+    
+    if((monsterName == "Dragon" || monsterName == "Black Knight" 
+        || monsterName == "Black Bear") && levels >= 5)
+    {
+        if(levels >= 5)
+        {
+            if( winPercentage <= bossWinPercent)
+            {
+                money +=
+
+
+
+}
 
 
 
