@@ -9,7 +9,7 @@
 class Adventure
 {
 
-    protected:
+    private:
         double strength;
         double will;
         double wisdom;
@@ -23,6 +23,7 @@ class Adventure
         std::string regMonster1;
         std::string regMonster2;
         std::string bossMonster;
+
     public:
        Adventure();//initialize stats then use load game to get stats
        void restoreHealth(std::vector<std::string>);

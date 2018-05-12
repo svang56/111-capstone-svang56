@@ -6,6 +6,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
+
 //fighting constants
 const int bossMoney = 50;
 const int bossExp = 70;
