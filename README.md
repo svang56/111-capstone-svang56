@@ -28,11 +28,11 @@ have to battle an enemy at the castle when they search for treasure chests.
 
 (provide command to compile, run, and interact with the program)
 
-In order to compile the program, I had to type "g++ main.cpp textadventure.cpp".
-To run the program, I had to type "./a.out".
-As you run the program, you have to type numbers as input in order to traverse
-through it. There are also statements tell the user exactly what each number
-will do when playing the game.
+This requires a linux system and to build it you would use:
+```make```
+Then to run it, give the command:
+```./textadventure```
+
 
 # REQUIREMENTS
 
