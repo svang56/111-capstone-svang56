@@ -1,5 +1,5 @@
 all:
-  g++ main.cpp textadventure.cpp -o textadventure
+	g++ main.cpp textadventure.cpp -o textadventure
   
 clean:
-  rm *.out
+	rm *.out
